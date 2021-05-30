@@ -5,7 +5,9 @@
 <h2> (Guaranteed cat poop free, or your money 50% refunded!) </h2>
 
 <div class="links">
-  @Html.ActionLink("Make a new order", "Create", "Orders", new { @class = "btn btn-primary" })
+  @Html.ActionLink("View Menu", "Index", "Orders", new { @class = "btn btn-primary" })
 </div>
 
-
+<div class="links">
+  @Html.ActionLink("Staff Only: edit the menu", "Create", "Orders", new { @class = "btn btn-primary" })
+</div>
