@@ -9,7 +9,7 @@ using PizzaParlor.Models;
 namespace PizzaParlor.Migrations
 {
     [DbContext(typeof(PizzaParlorContext))]
-    [Migration("20210530222437_Initial")]
+    [Migration("20210602021805_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

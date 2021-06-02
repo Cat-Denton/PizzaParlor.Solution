@@ -6,12 +6,12 @@ namespace PizzaParlor.Models
   {
     public Order()
     {
-      this.JoinEntities = new HashSet<CustomerOrder>();
+      this.JoinEntities = new HashSet<MenuItemOrder>();
     }
-
     public int OrderId { get; set; }
     public int Total { get; set; }
-    public virtual ICollection<MenuItem> MenuItems { get; set; }
-    public virtual ICollection<CustomerOrder> JoinEntities { get; set; }
+    public int CustomerId { get; set; }
+    public virtual ICollection<MenuItemOrder> JoinEntities { get; set; }
+
   }
 }
