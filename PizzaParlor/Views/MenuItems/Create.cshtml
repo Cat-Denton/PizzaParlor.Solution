@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@model PizzaParlor.Models.MenuItem
+
+<h4>Add a new Menu Item!</h4>
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name)
+  @Html.LabelFor(model => model.price)
+  @Html.TextBoxFor(model => model.price)
+  @Html.LabelFor(model => model.Description)
+  @Html.TextBoxFor(model => model.Description)
+  @Html.LabelFor(model => model.IsTopping)
+  @Html.TextBoxFor(model => model.IsTopping)
+  
+  <input type="submit" value="Add new Menu Item" />
+}
+<p>@Html.ActionLink("Show all menu items", "Index")</p>

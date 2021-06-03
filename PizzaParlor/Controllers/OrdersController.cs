@@ -15,7 +15,6 @@ namespace PizzaParlor.Controllers
     }
     public ActionResult Index()
     {
-      ViewBag.Menu = _db.MenuItems.ToList();
       return View();
     }
   }
