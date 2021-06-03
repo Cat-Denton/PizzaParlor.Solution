@@ -15,5 +15,21 @@ namespace PizzaParlor.Controllers
     {
       _db = db;
     }
+    public ActionResult Index()
+    {
+      List<MenuItem> model = _db.MenuItems.ToList();
+      return View(model);
+    }
+    public ActionResult Create()
+    {
+      return View();
+    }
+    [HttpPost]
+    public ActionResult Create(MenuItem menuItem)
+    {
+      _db.MenuItems.Add(menuItem);
+      _db.SaveChanges();
+      return RedirectToAction("Index");  
+    }
   }
 }
