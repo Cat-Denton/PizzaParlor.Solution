@@ -1,0 +1,25 @@
+@{
+  Layout = "_Layout";
+}
+
+@model PizzaParlor.Models.Order
+@using PizzaParlor.Models
+
+<h1>Here is a list of the items on this order:</h1>
+
+@foreach(MenuItemOrder join in Model.JoinEntities)
+  {
+    <li>@join.MenuItem.Name</li> 
+  }
+
+<h1>Select a menu item from the list to add it to the order:</h1> 
+@using (Html.BeginForm())
+{
+  @Html.Label("Select menu item")
+  @Html.DropDownList("MenuItemId")
+  <input type="submit" value="Add menu item to order" class="btn btn-default" />
+}
+
+
+<p>@Html.ActionLink("Return to Menu", "Index", "MenuItems")</p>
+  

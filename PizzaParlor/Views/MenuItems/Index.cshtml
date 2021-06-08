@@ -11,3 +11,12 @@
 {
   <h3>No menu items have been added yet</h3>
 }
+
+<ul>
+  @foreach(MenuItem menuItem in Model)
+  {
+    <li>$@menuItem.price @menuItem.Name  Description: @menuItem.Description</li>
+  }
+</ul>
+
+@Html.ActionLink("Start a new Order", "Create", "Orders")

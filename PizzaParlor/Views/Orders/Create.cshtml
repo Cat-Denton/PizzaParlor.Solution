@@ -1,0 +1,14 @@
+@{
+  Layout = "_Layout";
+}
+
+@model PizzaParlor.Models.Order
+
+<h4>Please select an item from the menu to place an order:</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.Label("Select item")
+  @Html.DropDownList("MenuItemId")
+  <input type="submit" value="Add menu item to order" class="btn btn-default" />
+}
