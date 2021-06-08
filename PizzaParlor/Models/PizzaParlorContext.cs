@@ -4,7 +4,6 @@ namespace PizzaParlor.Models
 {
   public class PizzaParlorContext : DbContext
   {
-    public virtual DbSet<Customer> Customers { get; set; }
     public DbSet<Order> Orders { get; set; }
     public DbSet<MenuItemOrder> MenuItemOrders { get; set; }
     public DbSet<MenuItem> MenuItems { get; set; }

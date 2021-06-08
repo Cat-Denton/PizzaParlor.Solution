@@ -52,15 +52,14 @@ namespace PizzaParlor.Controllers
     }
 
     [HttpPost]
-    public ActionResult Details(Order order, int MenuItemId)
+    public ActionResult AddMenuItem(Order order, int MenuItemId)
     {
       if (MenuItemId != 0)
       {
         _db.MenuItemOrders.Add(new MenuItemOrder() { MenuItemId = MenuItemId, OrderId = order.OrderId });
       }
-      _db.Entry(order).State = EntityState.Modified;
       _db.SaveChanges();
-      return View();
+      return RedirectToAction("Details", new {id = order.OrderId});
     }
   }
 }
