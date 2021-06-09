@@ -15,9 +15,18 @@
 <ul>
   @foreach(MenuItem menuItem in Model)
   {
-    <li>$@menuItem.Price @menuItem.Name  Description: @menuItem.Description</li>
+    <li>
+      $@menuItem.Price @menuItem.Name
+      <br>
+      Description: @menuItem.Description
+      <br>
+      @Html.ActionLink("Edit menu item", "Edit", new {id = menuItem.MenuItemId})
+      <br>
+      @Html.ActionLink("Delete menu item", "Delete", new {id = menuItem.MenuItemId})
+    </li>
   }
 </ul>
 
 <p>@Html.ActionLink("Start a new Order", "Create", "Orders")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
 <p>@Html.ActionLink("Add a menu item", "Create")</p>

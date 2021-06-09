@@ -32,11 +32,6 @@ namespace PizzaParlor.Controllers
     {
       _db.Orders.Add(order);
       _db.SaveChanges();
-      if (MenuItemId != 0)
-      {
-        _db.MenuItemOrders.Add(new MenuItemOrder() { MenuItemId = MenuItemId, OrderId = order.OrderId });
-      }
-      _db.SaveChanges();
       return RedirectToAction("Details", new {id = order.OrderId});
     }
 
@@ -61,6 +56,39 @@ namespace PizzaParlor.Controllers
       }
       _db.SaveChanges();
       return RedirectToAction("Details", new {id = order.OrderId});
+    }
+    public ActionResult Edit(int id)
+    {
+      Order thisOrder = _db.Orders.FirstOrDefault(order => order.OrderId == id);
+      return View(thisOrder);
+    }
+    [HttpPost]
+    public ActionResult Edit(Order order)
+    {
+      _db.Entry(order).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Details", new {id = order.OrderId});
+    }
+    public ActionResult Delete(int id)
+    {
+      var thisOrder = _db.Orders.FirstOrDefault(order => order.OrderId == id);
+      return View(thisOrder);
+    }
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      Order thisOrder = _db.Orders.FirstOrDefault(order => order.OrderId == id);
+      _db.Orders.Remove(thisOrder);
+      _db.SaveChanges();
+      return RedirectToAction("Index", "Home");
+    }
+    public ActionResult RemoveMenuItem(int joinId)
+    {
+      MenuItemOrder joinEntry = _db.MenuItemOrders.FirstOrDefault(menuItem => menuItem.MenuItemOrderId == joinId);
+      int orderId = joinEntry.OrderId;
+      _db.MenuItemOrders.Remove(joinEntry);
+      _db.SaveChanges();
+      return RedirectToAction("Details", new { id = orderId });
     }
   }
 }

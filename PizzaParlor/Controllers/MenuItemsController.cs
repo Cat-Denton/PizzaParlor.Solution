@@ -31,5 +31,32 @@ namespace PizzaParlor.Controllers
       _db.SaveChanges();
       return RedirectToAction("Create");  
     }
+    public ActionResult Edit(int id)
+    {
+      MenuItem thisMenuItem = _db.MenuItems.FirstOrDefault(menuItem => menuItem.MenuItemId == id);
+      return View(thisMenuItem);
+    }
+    [HttpPost]
+    public ActionResult Edit(MenuItem menuItem)
+    {
+      _db.Entry(menuItem).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    public ActionResult Delete(int id)
+    {
+      MenuItem thisMenuItem = _db.MenuItems.FirstOrDefault(menuItem => menuItem.MenuItemId == id);
+      return View(thisMenuItem);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      MenuItem thisMenuItem = _db.MenuItems.FirstOrDefault(menuItem => menuItem.MenuItemId == id);
+      _db.MenuItems.Remove(thisMenuItem);
+      _db.SaveChanges();
+      return RedirectToAction("Index", "MenuItems");
+    }
   }
 }

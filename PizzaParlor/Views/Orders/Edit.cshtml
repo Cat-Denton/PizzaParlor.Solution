@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+
+@model PizzaParlor.Models.Order
+
+<h4>Change customer details or pickup/delivery</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.OrderId)
+  @Html.Label("Customer Information (Name, Phone Number, Address)")
+  @Html.EditorFor(model => model.CustomerInfo)
+  <br>
+  @Html.Label("Is this a delivery?")
+  @Html.EditorFor(model => model.IsDelivery)
+  <br>
+  <input type="submit" value="Save" class="btn btn-default" />
+}

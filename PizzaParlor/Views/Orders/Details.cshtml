@@ -5,14 +5,31 @@
 @model PizzaParlor.Models.Order
 @using PizzaParlor.Models
 
-<h1>Here is a list of the items on this order:</h1>
+<h1>Order Details</h1>
+<h3>Customer details: @Html.DisplayFor(model => model.CustomerInfo) </h3>
 
+@if (Model.IsDelivery)
+{
+  <p>This is a delivery order.</p>
+}
+else
+{
+  <p>This order is for pick-up</p>
+}
+<h3>Here is a list of the items on this order:</h3>
 @foreach(MenuItemOrder join in Model.JoinEntities)
   {
-    <li>@join.MenuItem.Name</li> 
+    <li>
+      @join.MenuItem.Name
+      @using(Html.BeginForm("RemoveMenuItem","Orders"))
+      {
+        @Html.Hidden("joinId", @join.MenuItemOrderId)
+        <input type="submit" value="Delete"/>
+      }
+    </li> 
   }
 
-<h1>Select a menu item from the list to add it to the order:</h1> 
+<p>Select a menu item from the list to add it to the order:</p> 
 @using (Html.BeginForm("AddMenuItem","Orders"))
 {
   @Html.Hidden("orderId", Model.OrderId)
@@ -23,4 +40,5 @@
 
 
 <p>@Html.ActionLink("Return to Menu", "Index", "MenuItems")</p>
-  
+<p>@Html.ActionLink("Edit customer or delivery details", "Edit", new { id = Model.OrderId})</p>
+<p>@Html.ActionLink("Delete this order", "Delete", new { id = Model.OrderId})</p>

@@ -5,9 +5,11 @@
 <h2> (Guaranteed cat poop free, or your money 50% refunded!) </h2>
 
 <div class="links">
-  @Html.ActionLink("View Menu", "Index", "MenuItems")
+<p>@Html.ActionLink("Create an account", "Register", "Account")</p>
+<p>@Html.ActionLink("View Menu", "Index", "MenuItems")</p>
 </div>
 
 <div class="links">
-  @Html.ActionLink("Staff Only: edit the menu", "Create", "MenuItems")
+  <p>@Html.ActionLink("Staff Only: edit the menu", "Create", "MenuItems")</p>
+  <p>@Html.ActionLink("Staff Only: see all orders", "Index", "Orders")</p>
 </div>

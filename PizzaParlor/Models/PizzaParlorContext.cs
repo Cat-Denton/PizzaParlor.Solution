@@ -1,8 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace PizzaParlor.Models
 {
-  public class PizzaParlorContext : DbContext
+  public class PizzaParlorContext : IdentityDbContext<ApplicationUser>
   {
     public DbSet<Order> Orders { get; set; }
     public DbSet<MenuItemOrder> MenuItemOrders { get; set; }
