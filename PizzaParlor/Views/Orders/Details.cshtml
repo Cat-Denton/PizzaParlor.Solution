@@ -13,8 +13,9 @@
   }
 
 <h1>Select a menu item from the list to add it to the order:</h1> 
-@using (Html.BeginForm())
+@using (Html.BeginForm("AddMenuItem","Orders"))
 {
+  @Html.Hidden("orderId", Model.OrderId)
   @Html.Label("Select menu item")
   @Html.DropDownList("MenuItemId")
   <input type="submit" value="Add menu item to order" class="btn btn-default" />

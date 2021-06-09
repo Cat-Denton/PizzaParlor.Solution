@@ -17,7 +17,8 @@ namespace PizzaParlor.Controllers
     }
     public ActionResult Index()
     {
-      return View();
+      var orderList = _db.Orders.ToList();
+      return View(orderList);
     }
 
     public ActionResult Create()

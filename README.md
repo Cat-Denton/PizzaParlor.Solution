@@ -21,7 +21,8 @@ WHAT TO DO
 4. Finish routes/views for Order
   * AddMenuItem
   * Finish Details
-  * MarkComplete
+  * Index
+    * MarkComplete
   * Edit and Delete Order
 5. Finish routes/views for MenuItems
   * Edit and Delete MenuItems

@@ -4,11 +4,15 @@
 
 @model PizzaParlor.Models.Order
 
-<h4>Please select an item from the menu to place an order:</h4>
+<h4>Start your order with some very personal info</h4>
 
 @using (Html.BeginForm())
 {
-  @Html.Label("Select item")
-  @Html.DropDownList("MenuItemId")
-  <input type="submit" value="Add menu item to order" class="btn btn-default" />
+  @Html.Label("Customer Information (Name, Phone Number, Address)")
+  @Html.TextBoxFor(model => model.CustomerInfo)
+  <br>
+  @Html.Label("Is this a delivery?")
+  @Html.EditorFor(model => model.IsDelivery)
+  <br>
+  <input type="submit" value="Start New Order" class="btn btn-default" />
 }

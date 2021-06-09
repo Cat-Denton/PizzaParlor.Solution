@@ -29,7 +29,7 @@ namespace PizzaParlor.Controllers
     {
       _db.MenuItems.Add(menuItem);
       _db.SaveChanges();
-      return RedirectToAction("Index");  
+      return RedirectToAction("Create");  
     }
   }
 }
