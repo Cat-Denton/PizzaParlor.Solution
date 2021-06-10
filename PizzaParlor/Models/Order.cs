@@ -13,6 +13,7 @@ namespace PizzaParlor.Models
     public string CustomerInfo { get; set; }
     public bool IsDelivery { get; set; }
     public bool IsComplete { get; set; }
+    public virtual ApplicationUser User { get; set; }
     public virtual ICollection<MenuItemOrder> JoinEntities { get; set; }
 
   }
