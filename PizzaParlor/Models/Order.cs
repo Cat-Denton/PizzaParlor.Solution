@@ -9,6 +9,7 @@ namespace PizzaParlor.Models
       this.JoinEntities = new HashSet<MenuItemOrder>();
     }
     public int OrderId { get; set; }
+    public string Name { get; set; }
     public int Total { get; set; }
     public string CustomerInfo { get; set; }
     public bool IsDelivery { get; set; }

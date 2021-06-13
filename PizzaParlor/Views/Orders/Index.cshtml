@@ -13,7 +13,17 @@
 
 @foreach (Order order in Model)
 {
-  <li>@Html.ActionLink($"{order.OrderId}", "Details", new { id = order.OrderId })</li>
+  <li>@Html.ActionLink($"{order.OrderId}", "Details", new { id = order.OrderId }) @Html.Display(order.Name)
+    @if(order.IsDelivery)
+    {
+      @Html.Display("Delivery Order |");
+      @Html.Display(order.CustomerInfo);
+    }
+    else
+    {
+      @Html.Display("Pickup Order")
+    }
+  </li>
 }
 
 <p>@Html.ActionLink("Home", "Index", "Home")</p>
